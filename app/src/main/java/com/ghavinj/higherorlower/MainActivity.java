@@ -13,11 +13,12 @@ public class MainActivity extends AppCompatActivity {
     public void guessTheNumber(View view){
         EditText guessEditText = (EditText) findViewById(R.id.guessEditText);
         int guess = Integer.parseInt(guessEditText.getText().toString());
-        final int random = new Random().nextInt(1) + 19;
+        final int random = new Random().nextInt(1) + 20;
 
         if (guess == random){
 
             Toast.makeText(this, "You Win, Great Guess", Toast.LENGTH_SHORT).show();
+
         }else if(guess > random){
             Toast.makeText(this, "Your Getting Colder", Toast.LENGTH_SHORT).show();
         }else{
