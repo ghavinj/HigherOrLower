@@ -10,25 +10,30 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    int random;
+
     public void guessTheNumber(View view){
         EditText guessEditText = (EditText) findViewById(R.id.guessEditText);
         int guess = Integer.parseInt(guessEditText.getText().toString());
-        final int random = new Random().nextInt(1) + 20;
+
+        String message;
 
         if (guess == random){
-
-            Toast.makeText(this, "You Win, Great Guess", Toast.LENGTH_SHORT).show();
-
+            message = "You Win, Great Guess, Try Again!";
         }else if(guess > random){
-            Toast.makeText(this, "Your Getting Colder", Toast.LENGTH_SHORT).show();
+            message = "Your Cold";
         }else{
-            Toast.makeText(this, "Your Getting Warmer", Toast.LENGTH_SHORT).show();
+            message = "Your Getting Warmer";
         }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Random rand = new Random();
+        random = rand.nextInt(20) + 1;
     }
 }
