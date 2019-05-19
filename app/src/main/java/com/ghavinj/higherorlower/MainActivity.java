@@ -12,6 +12,11 @@ public class MainActivity extends AppCompatActivity {
 
     int random;
 
+    public void generateRandomNumber(){
+        Random rand = new Random();
+        random = rand.nextInt(20) + 1;
+    }
+
     public void guessTheNumber(View view){
         EditText guessEditText = (EditText) findViewById(R.id.guessEditText);
         int guess = Integer.parseInt(guessEditText.getText().toString());
@@ -20,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (guess == random){
             message = "You Win, Great Guess, Try Again!";
+            generateRandomNumber();
         }else if(guess > random){
             message = "Your Cold";
         }else{
@@ -33,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Random rand = new Random();
-        random = rand.nextInt(20) + 1;
+        generateRandomNumber();
     }
 }
